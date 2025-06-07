@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #6b7280;
+      --heading-color: #111827;
+      --accent-color: #274ecc;
+      --input-border: #d1d5db;
+      --input-focus-border: #2563eb;
+      --radius: 0.75rem;
+      --shadow-light: rgba(0, 0, 0, 0.1);
+      --font-family-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --max-width: 400px;
+    }
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: var(--font-family-sans);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url(https://hormigonaldia.ich.cl/wp-content/uploads/2020/07/8586-1024x683.jpg) no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      color: var(--text-color);
+      padding: 2rem;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+    .login-box {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 3rem 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px var(--shadow-light);
+      width: 100%;
+      max-width: var(--max-width);
+      text-align: center;
+    }
+    .login-box h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--heading-color);
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--heading-color);
+      font-size: 1rem;
+      text-align: left;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border: 1.5px solid var(--input-border);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline-offset: 2px;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--input-focus-border);
+      box-shadow: 0 0 6px var(--input-focus-border);
+      outline: none;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 0.9rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 12px rgba(39,78,204,0.5);
+    }
+    input[type="submit"]:hover,
+    input[type="submit"]:focus {
+      background-color: #1e40af;
+      outline: none;
+    }
+    .extra {
+      margin-top: 1.75rem;
+      font-size: 0.9rem;
+    }
+    .extra p {
+      margin: 0.4rem 0;
+    }
+    .extra a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .extra a:hover,
+    .extra a:focus {
+      text-decoration: underline;
+      color: #1e40af;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="login-box" role="main" aria-label="Formulario de inicio de sesión">
+      <h2>Iniciar Sesión</h2>
+      <form id="login-form" novalidate>
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="usuario" required autocomplete="username" />
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" name="contrasena" required autocomplete="current-password" />
+
+        <input type="submit" value="Entrar" aria-label="Botón para iniciar sesión" />
+      </form>
+      <div class="extra">
+        <p><a href="#" id="forgot-password">¿Olvidaste tu contraseña?</a></p>
+        <p><a href="#" id="create-account">Crear cuenta nueva</a></p>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('login-form');
+      const forgotPasswordLink = document.getElementById('forgot-password');
+      const createAccountLink = document.getElementById('create-account');
+
+      loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const usuario = loginForm.usuario.value.trim();
+        const contrasena = loginForm.contrasena.value.trim();
+
+        if(usuario === "hola 123" && contrasena === "pagina") {
+          alert("Ha iniciado sesión correctamente");
+        } else {
+          alert("Usuario y/o contraseña incorrectos");
+        }
+      });
+
+      forgotPasswordLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        alert('Funcionalidad para recuperar contraseña no implementada.');
+      });
+
+      createAccountLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        alert('Funcionalidad para crear una cuenta nueva no implementada.');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
